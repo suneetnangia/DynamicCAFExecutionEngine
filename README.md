@@ -1,6 +1,6 @@
 # Dynamic CAF Execution Engine
 <Add Azure Deployment Button>
-Demonstrates how Terraform CAF landing zones can be deployed dynamically from an API. This allows development of new landing zones and amendment of existing ones to be performed by the non-developer audience e.g. infrastructure engineers.
+Demonstrates how Terraform CAF landing zones can be deployed dynamically from an API. This is an extensible design to allow development of new landing zones and amendment of existing ones by the a non-developer audience e.g. infrastructure engineers.
 
 It covers the following design aspects-
 1. Hosting of CAF landing zones to run Terraform.
