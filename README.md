@@ -13,7 +13,7 @@ Once you know the basics, follow the steps mentioned here-
 1. Clone this repository locally.
 2. Open VSCode from /infrastructure folder.
 3. In VSCode reopen the folder in container (dev container).
-4. Go to temrinal windows in VSCode and run the landing zones as described in getting started document mentioned above, following by the below landing zone via rover as below-
+4. Go to temrinal window in VSCode and run the landing zones as described in getting started document mentioned above, following by the below landing zone via rover as below-
    1. rover -lz /tf/caf/caf_landingzones/caf_launchpad -launchpad -var-folder /tf/caf/caf_landingzones/caf_launchpad/scenario/basic -a apply
    2. rover -lz /tf/caf/caf_landingzones/caf_foundations -level level1 -a apply
    3. rover -lz /tf/caf/caf_landingzones/caf_network_hub -level level2 -var-folder /tf/caf/caf_landingzones/caf_network_hub/scenario/single-region-hub-001 -a apply
