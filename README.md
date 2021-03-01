@@ -66,3 +66,5 @@ Glossary
 - ACI- Azure Container Instance
 - ASB- Azure Service Bus
 - RCP- Resource Change Processor
+
+I am greateful to [Laurent](https://github.com/LaurentLesle) for his support on CAF design which was extremely useful during the development of this solution. Also, [Joni](https://github.com/jjcollinge) for adding output to return the result from CAF deployment to the caller.
