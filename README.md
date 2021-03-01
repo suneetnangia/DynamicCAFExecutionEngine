@@ -3,32 +3,31 @@
 This repo demonstrates how Terraform CAF landing zones can be deployed dynamically from an API. This is an extensible design to allow development of new landing zones and amendment of existing ones by the a non-developer audience e.g. infrastructure engineers.
 
 It covers the following design aspects-
-1. Hosting of CAF landing zones to run Terraform.
+1. Hosting of CAF landing zones to deploy resources.
 2. Execution of CAF engine (Rover) on an on-demand basis.
-3. API requests handling by TF parameters in CAF.
+3. Dynamic parameters replacement in CAF landing zones.
 
 ## How To
-You will need to be familiar with CAF basics to be able to deploy this solution, please find more info around getting started with general CAF landing zones [here](https://github.com/Azure/caf-terraform-landingzones/blob/master/documentation/getting_started/getting_started.md)
+You will need to be familiar with CAF basics to be able to deploy and full appreciate this solution, please find more info around getting started with general CAF landing zones [here](https://github.com/Azure/caf-terraform-landingzones/blob/master/documentation/getting_started/getting_started.md)
 Once you know the basics, follow the steps mentioned here-
 1. Clone this repository locally.
-2. Open VSCode from /infrastructure folder.
+2. Open VSCode in /infrastructure folder.
 3. In VSCode reopen the folder in container (dev container).
-4. Go to temrinal window in VSCode and run the landing zones as described in getting started document mentioned above, following by the below landing zone via rover as below-
+4. Go to temrinal window in VSCode and run the landing zones as below-
    1. rover -lz /tf/caf/caf_landingzones/caf_launchpad -launchpad -var-folder /tf/caf/caf_landingzones/caf_launchpad/scenario/basic -a apply
    2. rover -lz /tf/caf/caf_landingzones/caf_foundations -level level1 -a apply
    3. rover -lz /tf/caf/caf_landingzones/caf_network_hub -level level2 -var-folder /tf/caf/caf_landingzones/caf_network_hub/scenario/single-region-hub-001 -a apply
    4. rover -lz /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -level level3 -var-folder /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -a apply
-5. Solution is now deployed to the subscription you logged in via rover login command.
-6. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service.
+5. Solution is now deployed in your subscription.
+6. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service and actions on service.
 
 ## Design Thinking
 ![alt text](./design/ExecutionDesign.jpg "Design")
-To deploy a landing zone for any project we generally need to deploy various Azure services. As an example here we have a workspace landing zone (level 3) and service landing zone (level 4). Workspace landing zone consist of a virtual network where data science VMs will be hosted. Service landing zone on the other hand consists of a VM with associated Azure services like network interface card, key vault etc.
+To deploy a landing zone for any project we generally need to deploy various Azure services. As an example here, we have a workspace landing zone (level 3) and service landing zone (level 4). Workspace landing zone consist of a virtual network where data science VMs will be hosted. Service landing zone on the other hand consists of a VM with associated Azure services like network interface card, key vault etc.
 
-Deployment of these landing zones is performed via Terraform configurations. These configurations are pre-created and stored in the form of templates i.e. they can be parameterised when new requests come for either workspace or a service landing zone. In this example we have two such landing zone templates, one for workspace and one for DSVM service.
+Deployment of these landing zones is performed via Terraform configurations. These configurations are pre-created and stored in the form of templates i.e. they can be parameterised when new requests come for either workspace or a service landing zone. In this example we have three such landing zone templates, one for workspace, one for DSVM service and one for actions on a service.
 
-The solution uses the CAF framework to deploy Terraform templates by the means of landing zones concept in CAF. It is recommended to read about and understand CAF framework working [here](https://github.com/Azure/caf-terraform-landingzones/blob/master/documentation/code_architecture/hierarchy.md) beforehand to fully appreciate the current design.
-CAF suggests deploying your infrastructure at different levels (0-4), **like the ISO OSI networking model** each level provides a foundation and services for the level above it.
+The solution uses the CAF framework to deploy Terraform templates by the means of landing zones concept in CAF. CAF suggests deploying your infrastructure at different levels (0-4), **like the ISO OSI networking model** each level provides a foundation and services for the levels above it.
 
 In CAF's context-
 
