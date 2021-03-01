@@ -62,8 +62,8 @@ Terraform - for deploying the core DMI application, workspace and service.
 Liquid Templates - for transforming the Terraform json tfvar files using parameters in received event.
 
 Glossary
-TF - Terraform
-CAF- Cloud Adoption Framework
-ACI- Azure Container Instance
-ASB- Azure Service Bus
-RCP- Resource Change Processor
+- TF - Terraform
+- CAF- Cloud Adoption Framework
+- ACI- Azure Container Instance
+- ASB- Azure Service Bus
+- RCP- Resource Change Processor
