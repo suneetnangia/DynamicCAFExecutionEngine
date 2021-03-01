@@ -7,6 +7,10 @@ It covers the following design aspects-
 2. Execution of CAF engine (Rover) on an on-demand basis.
 3. API requests handling by TF parameters in CAF.
 
+## How To
+[Add section to define steps for deploying this solution in the new or existing CAF deployments]
+
+## Design Thinking
 To deploy a landing zone for any project we generally need to deploy various Azure services. As an example here we have a workspace landing zone (level 3) and service landing zone (level 4). Workspace landing zone consist of a virtual network where data science VMs will be hosted. Service landing zone on the other hand consists of a VM with associated Azure services like network interface card, key vault etc.
 
 Deployment of these landing zones is performed via Terraform configurations. These configurations are pre-created and stored in the form of templates i.e. they can be parameterised when new requests come for either workspace or a service landing zone. In this example we have two such landing zone templates, one for workspace and one for DSVM service.
