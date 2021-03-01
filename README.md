@@ -57,7 +57,7 @@ The solution uses the following technologies-
 - Azure Storage File Shares - for storing Terraform landing zone templates and transformed terraform.
 - Azure Managed Service Identity - for providing access to various azure services.
 - Cloud Adoption Framework - for deploying infrastructure.
-- Terraform - for deploying the core DMI application, workspace and service.
+- Terraform - for deploying the core application, workspace and service.
 - Liquid Templates - for transforming the Terraform json tfvar files using parameters in received event.
 
 
