@@ -31,11 +31,11 @@ The solution uses the CAF framework to deploy Terraform templates by the means o
 
 In CAF's context-
 
-Level 4 deploys the actual end user application, in our case, a data science VM service is deployed at this level.
-Level 3 deploys hosting infrastructure for the actual applications, in our case, a workspace is deployed at this level. We also deploy core application at this level which dynamically create workspaces and services.
-Level 2 deploys core networking infrastructure like hub network in Hub-Spoke networking model to host shared services, in our case, we don't currently deploy hub network.
-Level 1 deploys foundation services like diagnostics (Azure Monitor) which are reused by all the levels above it.
-level 0 deploys a basic infrastructure to bootstrap Terraform e.g. creating backend state store and key vaults for every level.
+- Level 4 deploys the actual end user application, in our case, a data science VM service is deployed at this level.
+- Level 3 deploys hosting infrastructure for the actual applications, in our case, a workspace is deployed at this level. We also deploy core application at this level which dynamically create workspaces and services.
+- Level 2 deploys core networking infrastructure like hub network in Hub-Spoke networking model to host shared services, in our case, we don't currently deploy hub network.
+- Level 1 deploys foundation services like diagnostics (Azure Monitor) which are reused by all the levels above it.
+- level 0 deploys a basic infrastructure to bootstrap Terraform e.g. creating backend state store and key vaults for every level.
 
 It is important to note that we can and we do deploy multiple landing zones at different levels. A landing zone is an instance of template deployment of a specific type e.g. workspace template. This is specifically a case with workspaces and data science service i.e. for every new request for a workspace we deploy a new landing zone at level 3 and similarly for each new data science service request we deploy a new level 4 landing zone.
 
@@ -51,14 +51,15 @@ The terraform template variable files terraform.tfvars.json for each landing zon
 **Technologies**
 The solution uses the following technologies-
 
-Azure Container Instances- for hosting CAF rover tool and deploying landing zones.
-Azure Function Apps - for running CAF landing zones.
-Azure Service Bus - for dynamic message routing.
-Azure Storage File Shares - for storing Terraform landing zone templates and transformed terraform.
-Azure Managed Service Identity - for providing access to various azure services.
-Cloud Adoption Framework - for deploying infrastructure.
-Terraform - for deploying the core DMI application, workspace and service.
-Liquid Templates - for transforming the Terraform json tfvar files using parameters in received event.
+- Azure Container Instances- for hosting CAF rover tool and deploying landing zones.
+- Azure Function Apps - for running CAF landing zones.
+- Azure Service Bus - for dynamic message routing.
+- Azure Storage File Shares - for storing Terraform landing zone templates and transformed terraform.
+- Azure Managed Service Identity - for providing access to various azure services.
+- Cloud Adoption Framework - for deploying infrastructure.
+- Terraform - for deploying the core DMI application, workspace and service.
+- Liquid Templates - for transforming the Terraform json tfvar files using parameters in received event.
+
 
 Glossary
 - TF - Terraform
