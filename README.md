@@ -22,6 +22,7 @@ Once you know the basics, follow the steps mentioned here-
 6. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service.
 
 ## Design Thinking
+![alt text](./design/ExecutionDesign.jpg "Design")
 To deploy a landing zone for any project we generally need to deploy various Azure services. As an example here we have a workspace landing zone (level 3) and service landing zone (level 4). Workspace landing zone consist of a virtual network where data science VMs will be hosted. Service landing zone on the other hand consists of a VM with associated Azure services like network interface card, key vault etc.
 
 Deployment of these landing zones is performed via Terraform configurations. These configurations are pre-created and stored in the form of templates i.e. they can be parameterised when new requests come for either workspace or a service landing zone. In this example we have two such landing zone templates, one for workspace and one for DSVM service.
@@ -43,8 +44,6 @@ So how are these templates for workspace and data science service deployed?
 CAF provides a landing zone deployment tool called [Rover](https://github.com/aztfmod/rover) which is hosted in a container and available from [container public registry](https://github.com/aztfmod/rover). The tool itself is a shell script to deploy Terraform with some CAF concepts baked into it. To deploy a template implementing a landing zone concept we run Rover container in Azure Container Instance (ACI) service on an on-demand basis.
 
 The terraform template variable files terraform.tfvars.json for each landing zone template (i.e. workspace or service) are tokenised using Liquid templates, we use an [OSS nuget package](https://github.com/dotliquid/dotliquid) in RCP function to achieve this. Values from events received are replaced in this this template using Liquid template expression language. This allows us to update the Terraform landing zone template in the corresponding terraform.tfvars.json dynamically without changing code.
-
-![alt text](./design/ExecutionDesign.jpg "Design")
 
 **Design Benefits**
 1. It allows us to follow the CAF best practices for workspace and service deployments e.g. separation of concern and security at each layer.
