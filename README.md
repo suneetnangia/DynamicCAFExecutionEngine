@@ -1,6 +1,6 @@
 # Dynamic CAF Execution Engine
 <Add Azure Deployment Button>
-Demonstrates how Terraform CAF landing zones can be deployed dynamically from an API. This is an extensible design to allow development of new landing zones and amendment of existing ones by the a non-developer audience e.g. infrastructure engineers.
+This repo demonstrates how Terraform CAF landing zones can be deployed dynamically from an API. This is an extensible design to allow development of new landing zones and amendment of existing ones by the a non-developer audience e.g. infrastructure engineers.
 
 It covers the following design aspects-
 1. Hosting of CAF landing zones to run Terraform.
@@ -8,7 +8,18 @@ It covers the following design aspects-
 3. API requests handling by TF parameters in CAF.
 
 ## How To
-[Add section to define steps for deploying this solution in the new or existing CAF deployments]
+You will need to be familiar with CAF basics to be able to deploy this solution, please find more info around getting started with general CAF landing zones [here](https://github.com/Azure/caf-terraform-landingzones/blob/master/documentation/getting_started/getting_started.md)
+Once you know the basics, follow the steps mentioned here-
+1. Clone this repository locally.
+2. Open VSCode from /infrastructure folder.
+3. In VSCode reopen the folder in container (dev container).
+4. Go to temrinal windows in VSCode and run the landing zones as described in getting started document mentioned above, following by the below landing zone via rover as below-
+   1. rover -lz /tf/caf/caf_landingzones/caf_launchpad -launchpad -var-folder /tf/caf/caf_landingzones/caf_launchpad/scenario/basic -a apply
+   2. rover -lz /tf/caf/caf_landingzones/caf_foundations -level level1 -a apply
+   3. rover -lz /tf/caf/caf_landingzones/caf_network_hub -level level2 -var-folder /tf/caf/caf_landingzones/caf_network_hub/scenario/single-region-hub-001 -a apply
+   4. rover -lz /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -level level3 -var-folder /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -a apply
+5. Solution is now deployed to the subscription you logged in via rover login command.
+6. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service.
 
 ## Design Thinking
 To deploy a landing zone for any project we generally need to deploy various Azure services. As an example here we have a workspace landing zone (level 3) and service landing zone (level 4). Workspace landing zone consist of a virtual network where data science VMs will be hosted. Service landing zone on the other hand consists of a VM with associated Azure services like network interface card, key vault etc.
