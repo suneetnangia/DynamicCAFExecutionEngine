@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "993dbb43-2c76-4a6c-88f4-1ab64f28081b",
+		"name": "CAF Execution Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Workspace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"id\": \"6b2c0ee3-0c2d-494b-9aec-89bd015174f5\",\r\n    \"parentId\": \"\",\r\n    \"grandParentId\": \"\",\r\n    \"data\": \"{\\r\\n    \\\"name\\\": \\\"Parentws\\\",\\r\\n    \\\"description\\\": \\\"Some Description\\\"}\",\r\n    \"resourceType\": \"Workspace\",\r\n    \"isDeleted\": false    \r\n}       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yourfunctionapp.azurewebsites.net/api/ResourceChangeProcessor?code=yourfunctionappkey",
+					"protocol": "https",
+					"host": [
+						"accl-rcp-func-app-uat",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ResourceChangeProcessor"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "jmkM7/RJBJgv1UWBDIva82mLKt77pu7IKtyoRTMb9DG7DQZePnUd9A=="
+						}
+					]
+				},
+				"description": "Creates a workspace at CAF level 3."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{            \r\n    \"id\": \"447b4e15-774e-445d-ab59-575f5d9eb6bb\",    \r\n    \"parentId\": \"6b2c0ee3-0c2d-494b-9aec-89bd015174f5\",\r\n    \"grandParentId\": null,    \r\n    \"data\": \"{\\r\\n    \\\"name\\\": \\\"Parentws1\\\",\\r\\n    \\\"size\\\": \\\"small\\\",\\r\\n    \\\"osType\\\": \\\"windows\\\"\\r\\n}\",\r\n    \"resourceType\": \"Service\",\r\n    \"isDeleted\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://yourfunctionapp.azurewebsites.net/api/ResourceChangeProcessor?code=yourfunctionappkey",
+					"protocol": "https",
+					"host": [
+						"accl-rcp-func-app-uat",
+						"azurewebsites",
+						"net"
+					]
+				},
+				"description": "Creates a data science VM as CAF level 4."
+			},
+			"response": []
+		},
+		{
+			"name": "Start Stop Service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"id\": \"580ba4dc-6ccd-4417-bb27-ff22405d52f4\",\r\n    \"parentId\": \"447b4e15-774e-445d-ab59-575f5d9eb6bb\",\r\n    \"grandParentId\": \"6b2c0ee3-0c2d-494b-9aec-89bd015174f5\",    \r\n    \"data\": \"{\\r\\n    \\\"action\\\": \\\"start\\\"\\r\\n}\",\r\n    \"resourceType\": \"Action\",\r\n    \"isDeleted\": false    \r\n}"
+				},
+				"url": {
+					"raw": "https://yourfunctionapp.azurewebsites.net/api/ResourceChangeProcessor?code=yourfunctionappkey",
+					"protocol": "https",
+					"host": [
+						"accl-rcp-func-app-uat",
+						"azurewebsites",
+						"net"
+					]
+				},
+				"description": "Start, stop or restart a data science VM service as CAF level 4."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
