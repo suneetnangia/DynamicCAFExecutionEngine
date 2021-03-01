@@ -33,6 +33,8 @@ CAF provides a landing zone deployment tool called [Rover](https://github.com/az
 
 The terraform template variable files terraform.tfvars.json for each landing zone template (i.e. workspace or service) are tokenised using Liquid templates, we use an [OSS nuget package](https://github.com/dotliquid/dotliquid) in RCP function to achieve this. Values from events received are replaced in this this template using Liquid template expression language. This allows us to update the Terraform landing zone template in the corresponding terraform.tfvars.json dynamically without changing code.
 
+![alt text](./design/ExecutionDesign.jpg "Design")
+
 **Design Benefits**
 1. It allows us to follow the CAF best practices for workspace and service deployments e.g. separation of concern and security at each layer.
 2. To develop a new service or workspace, user does not need to change code, it can all be done via CAF TF templates
