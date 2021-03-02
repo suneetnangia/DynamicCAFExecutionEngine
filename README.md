@@ -18,8 +18,9 @@ Once you know the basics, follow the steps mentioned here-
    2. rover -lz /tf/caf/caf_landingzones/caf_foundations -level level1 -a apply
    3. rover -lz /tf/caf/caf_landingzones/caf_network_hub -level level2 -var-folder /tf/caf/caf_landingzones/caf_network_hub/scenario/single-region-hub-001 -a apply
    4. rover -lz /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -level level3 -var-folder /tf/caf/caf_landingzones/caf_core/scenario/dev-001 -a apply
-5. Solution is now deployed in your subscription.
-6. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service and actions on service.
+5. Deploy the function app called Resource Change Processor from Visual Studio to the Function app created by step 4 of rover deployment.
+6. Solution is now deployed in your subscription.
+7. Use http requests in HttpRequests folder to deploy landing zones for workspace, followed by service and actions on service.
 
 ## Design Thinking
 ![alt text](./design/ExecutionDesign.jpg "Design")
